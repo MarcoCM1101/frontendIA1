@@ -19,12 +19,14 @@ body {
 .navbar {
   display: flex;
   justify-content: center;
-  background-color: #222;
+  align-items: center;
+  background-color: #2d2d2d;
   padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Agrega sombra para separación */
+  height: 50px;
 }
 
 .navbar ul {
@@ -44,7 +46,7 @@ body {
   color: white;
   text-decoration: none;
   font-size: 1.2rem;
-  font-family: "Audiowide", sans-serif ;
+  font-family: "Audiowide", sans-serif;
 }
 
 .navbar ul li a:hover {
@@ -55,6 +57,7 @@ body {
   width: 100vw; /* Ancho completo del viewport */
   height: 100vh; /* Altura completa del viewport */
   position: relative; /* Mantén el visor en la pantalla */
+  color: #efefef;
 }
 
 spline-viewer {
@@ -63,7 +66,9 @@ spline-viewer {
 }
 
 .new-section {
-  background-color: lightgray;
+  background-color: #efefef;
+  color: #2d2d2d;
+  font-family: "Audiowide", sans-serif;
   padding: 50px;
   text-align: center;
   width: 100vw; /* Asegura que cubra todo el ancho */

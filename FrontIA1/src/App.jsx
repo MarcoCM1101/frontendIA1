@@ -23,7 +23,7 @@ function App() {
         {/* Spline Section */}
         <div className="spline-section">
           <div className={`title-overlay`}>
-            <h1>SPACE TITANIC</h1>
+            <h1>SPACESHIP TITANIC</h1>
           </div>
 
           <spline-viewer url="https://prod.spline.design/Sf2RIM4QpX2PAk2w/scene.splinecode"></spline-viewer>
@@ -65,6 +65,7 @@ function App() {
         {/* Prediction Section */}
         <div className="new-section" id="prediction">
           <h1>Prediction</h1>
+          {/* <CustomerRegistrationForm /> */}
           <p>
             Aquí puedes agregar información relacionada con predicciones y
             análisis.
@@ -75,8 +76,8 @@ function App() {
         <div className="new-section" id="conclusion">
           <h1>Conclusion</h1>
           <p>
-            Esta es la conclusión de la página. Puedes agregar aquí un
-            resumen de la información.
+            Esta es la conclusión de la página. Puedes agregar aquí un resumen
+            de la información.
           </p>
         </div>
       </div>
