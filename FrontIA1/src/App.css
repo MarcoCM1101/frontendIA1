@@ -19,8 +19,7 @@ body {
 .navbar {
   display: flex;
   justify-content: center;
-  align-items: center;
-  background-color: #2d2d2d;
+  background-color: #222;
   padding: 1rem;
   position: sticky;
   top: 0;
@@ -46,7 +45,7 @@ body {
   color: white;
   text-decoration: none;
   font-size: 1.2rem;
-  font-family: "Audiowide", sans-serif;
+  font-family: "Audiowide", sans-serif ;
 }
 
 .navbar ul li a:hover {
@@ -66,9 +65,7 @@ spline-viewer {
 }
 
 .new-section {
-  background-color: #efefef;
-  color: #2d2d2d;
-  font-family: "Audiowide", sans-serif;
+  background-color: lightgray;
   padding: 50px;
   text-align: center;
   width: 100vw; /* Asegura que cubra todo el ancho */
