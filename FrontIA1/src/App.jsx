@@ -4,21 +4,6 @@ import "./App.css";
 import PlanetComponent from "./components/PlanetComponent";
 
 function App() {
-  useEffect(() => {
-    console.log("Se montó el componente");
-
-    const handleScroll = () => {
-      console.log("Se hizo scroll");
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Limpiar el listener cuando el componente se desmonta
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <>
       <div className="container">
