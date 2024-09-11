@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
+import "./components/PlanetComponent";
 import "./App.css";
+import PlanetComponent from "./components/PlanetComponent";
 
 function App() {
   useEffect(() => {
@@ -66,10 +68,7 @@ function App() {
         <div className="new-section" id="prediction">
           <h1>Prediction</h1>
           {/* <CustomerRegistrationForm /> */}
-          <p>
-            Aquí puedes agregar información relacionada con predicciones y
-            análisis.
-          </p>
+          <PlanetComponent />
         </div>
 
         {/* Conclusion Section */}

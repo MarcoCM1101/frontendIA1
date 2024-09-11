@@ -1,0 +1,42 @@
+/* planetStyles.css */
+
+.carousel-container {
+  width: 70%; /* Ajusta el tamaño del contenedor del carrusel */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.planet-img {
+  transition: transform 0.5s ease; /* Añade transición para un efecto suave */
+  max-width: 100%; /* La imagen no debe superar el tamaño del contenedor */
+  height: auto;
+}
+
+/* Para ajustar el tamaño de los slides según la posición */
+.slick-center .planet-img {
+  transform: scale(1); /* Aumenta el tamaño de la imagen central */
+}
+
+.slick-slide {
+  transition: transform 0.5s ease; /* Transición suave entre slides */
+}
+
+.slick-slide:not(.slick-center) .planet-img {
+  transform: scale(
+    0.8
+  ); /* Los slides que no están en el centro se hacen más pequeños */
+}
+
+.slick-prev,
+.slick-next {
+  color: #000000; /* Color de los botones de navegación */
+}
+
+.slick-dots li button:before {
+  font-size: 12px; /* Tamaño de los puntos de navegación */
+  color: #020202; /* Color de los puntos */
+}
+
+.slick-dots li.slick-active button:before {
+  color: #ff5733; /* Color del punto activo */
+}

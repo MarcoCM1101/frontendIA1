@@ -45,7 +45,7 @@ body {
   color: white;
   text-decoration: none;
   font-size: 1.2rem;
-  font-family: "Audiowide", sans-serif ;
+  font-family: "Audiowide", sans-serif;
 }
 
 .navbar ul li a:hover {
@@ -66,7 +66,8 @@ spline-viewer {
 
 .new-section {
   background-color: lightgray;
-  padding: 50px;
+  font-family: "Audiowide", sans-serif;
+  color: #222;
   text-align: center;
   width: 100vw; /* Asegura que cubra todo el ancho */
   height: 100vh; /* Nueva sección también ocupa toda la pantalla */
