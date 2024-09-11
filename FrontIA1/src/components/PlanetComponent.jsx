@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import Planeta1 from "../images/Untitled-1-01.png";
 import Planeta2 from "../images/Untitled-1-02.png";
@@ -7,9 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/planetStyles.css";
 
-function PlanetComponent() {
-  const [selectedPlanet, setSelectedPlanet] = useState("");
-
+function PlanetComponent({ onPlanetSelect }) {
   // Lista de planetas con sus respectivas rutas de imagen
   const planets = [
     { id: 1, name: "Planeta 1", img: Planeta1 },
@@ -22,7 +20,7 @@ function PlanetComponent() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2, // Mostrar 3 slides al mismo tiempo
+    slidesToShow: 2, // Mostrar 2 slides al mismo tiempo
     centerMode: true, // Centrar el slide principal
     centerPadding: "0", // Sin padding adicional
     slidesToScroll: 1,
@@ -39,12 +37,9 @@ function PlanetComponent() {
 
   return (
     <div className="carousel-container">
-      <h1>Planeta seleccionado: {selectedPlanet}</h1>
-
-      {/* Carrusel usando react-slick */}
       <Slider {...settings}>
-        {planets.map((planet, index) => (
-          <div key={index} onClick={() => setSelectedPlanet(planet.name)}>
+        {planets.map((planet) => (
+          <div key={planet.id} onClick={() => onPlanetSelect(planet)}>
             <img
               id={planet.id}
               className="planet-img"
@@ -52,7 +47,6 @@ function PlanetComponent() {
               alt={planet.name}
               style={{ cursor: "pointer" }}
             />
-            <p>Planeta {index + 1}</p>
           </div>
         ))}
       </Slider>

@@ -93,3 +93,26 @@ spline-viewer {
   transform: translate(-50%, -150%);
   opacity: 0; /* Reduce la opacidad a 0 mientras se mueve */
 }
+
+.cancel-button {
+  position: fixed; /* Fija el botón en la pantalla */
+  top: 100%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Ajusta para que el centro del botón esté en el centro exacto */
+  padding: 15px 30px;
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.cancel-button:hover {
+  background-color: #ff2a00;
+}

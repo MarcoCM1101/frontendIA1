@@ -1,9 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "./components/PlanetComponent";
 import "./App.css";
 import PlanetComponent from "./components/PlanetComponent";
 
 function App() {
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
+  const [isExiting, setIsExiting] = useState(false); // Nuevo estado para la animación de salida
+
+  // Función para manejar la selección del planeta
+  const handlePlanetSelect = (planet) => {
+    setSelectedPlanet(planet); // Almacena el planeta seleccionado
+  };
+
+  // Función para cancelar la selección del planeta y regresar al carrusel con animación
+  const handleCancel = () => {
+    setIsExiting(true); // Inicia la animación de salida
+    setTimeout(() => {
+      setSelectedPlanet(null); // Reinicia el estado y vuelve al carrusel después de la animación
+      setIsExiting(false); // Reinicia el estado de la animación
+    }, 500); // Ajusta el tiempo para que coincida con la duración de la animación
+  };
+
   return (
     <>
       <div className="container">
@@ -12,7 +29,6 @@ function App() {
           <div className={`title-overlay`}>
             <h1>SPACESHIP TITANIC</h1>
           </div>
-
           <spline-viewer url="https://prod.spline.design/Sf2RIM4QpX2PAk2w/scene.splinecode"></spline-viewer>
         </div>
 
@@ -35,25 +51,28 @@ function App() {
         <div className="new-section" id="context">
           <h1>Esta es una nueva sección</h1>
           <p>Aquí puedes agregar más contenido.</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
         </div>
 
         {/* Prediction Section */}
         <div className="new-section" id="prediction">
           <h1>Prediction</h1>
-          {/* <CustomerRegistrationForm /> */}
-          <PlanetComponent />
+
+          {/* Mostrar el carrusel o el planeta seleccionado */}
+          {!selectedPlanet ? (
+            <PlanetComponent onPlanetSelect={handlePlanetSelect} />
+          ) : (
+            <div className={`selected-planet ${isExiting ? "fade-out" : ""}`}>
+              <img
+                src={selectedPlanet.img}
+                alt={selectedPlanet.name}
+                className="planet-img-selected"
+              />
+              {/* Botón de cancelar */}
+              <button className="cancel-button" onClick={handleCancel}>
+                Cancelar
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Conclusion Section */}

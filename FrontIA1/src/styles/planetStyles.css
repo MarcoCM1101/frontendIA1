@@ -46,3 +46,77 @@
 .slick-dots li.slick-active button:before {
   color: #ff5733; /* Color del punto activo */
 }
+
+.selected-planet {
+  display: flex;
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  padding-left: 5%; /* Añade un poco de espacio a la izquierda */
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out, scaleUp 0.8s ease-in-out;
+  transform: scale(1);
+}
+
+.planet-img-selected {
+  max-width: 800px;
+  height: auto;
+  transition: transform 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Nueva animación para la salida del planeta */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
+/* Aplicar la animación de salida */
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out, scaleDown 0.5s ease-in-out;
+}
+
+/* Estilos para el botón de cancelar */
+.cancel-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #ff2a00;
+}
