@@ -18,21 +18,21 @@ body {
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: #222;
   padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Agrega sombra para separación */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   height: 50px;
 }
 
 .navbar ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-around; /* Espaciado equitativo alrededor de cada elemento */
-  width: 100%; /* Asegura que ocupe todo el ancho del navbar */
+  justify-content: space-around;
+  width: 100%;
   padding: 0;
   margin: 0;
 }
@@ -53,9 +53,9 @@ body {
 }
 
 .spline-section {
-  width: 100vw; /* Ancho completo del viewport */
-  height: 100vh; /* Altura completa del viewport */
-  position: relative; /* Mantén el visor en la pantalla */
+  width: 100vw;
+  height: 100vh;
+  position: relative;
   color: #efefef;
 }
 
@@ -69,8 +69,9 @@ spline-viewer {
   font-family: "Audiowide", sans-serif;
   color: #222;
   text-align: center;
-  width: 100vw; /* Asegura que cubra todo el ancho */
-  height: 100vh; /* Nueva sección también ocupa toda la pantalla */
+  width: 100vw;
+  height: auto;
+  padding: 50px 0;
 }
 
 .title-overlay {
@@ -82,26 +83,58 @@ spline-viewer {
   color: white;
   font-size: 48px;
   font-weight: bold;
-  pointer-events: none; /* Para que el visor de Spline siga siendo interactivo */
+  pointer-events: none;
   z-index: 1;
   text-align: center;
   opacity: 1;
-  transition: transform 1s ease, opacity 1s ease; /* Transición suave */
+  transition: transform 1s ease, opacity 1s ease;
 }
 
-.title-overlay.scrolled {
-  transform: translate(-50%, -150%);
-  opacity: 0; /* Reduce la opacidad a 0 mientras se mueve */
+.planet-name-title {
+  font-size: 24px;
+  margin-top: 10px;
+  font-family: "Audiowide", sans-serif;
+  color: #222;
+  text-align: center;
+}
+
+.selected-planet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70vh;
+  padding: 20px;
+}
+
+.planet-left {
+  flex: 1;
+  text-align: center;
+}
+
+.planet-img-selected {
+  max-width: 80%;
+  height: auto;
+}
+
+.quiz-center {
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cancel-button {
-  position: fixed; /* Fija el botón en la pantalla */
-  top: 90%; /* Centra verticalmente */
-  left: 50%; /* Centra horizontalmente */
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Ajusta para que el centro del botón esté en el centro exacto */
   padding: 15px 30px;
   background-color: #ff5733;
   color: white;
@@ -110,9 +143,121 @@ spline-viewer {
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s ease;
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
 }
 
 .cancel-button:hover {
   background-color: #ff2a30;
+}
+
+.predict-button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.predict-button:hover {
+  background-color: #218838;
+}
+
+/* Animaciones */
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out, scaleDown 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estilos para el formulario */
+.quiz-carousel {
+  width: 600px; /* Ancho fijo del carrusel */
+  height: 360px; /* Alto fijo del carrusel */
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden; /* Asegura que no se expanda fuera del tamaño */
+}
+
+.quiz-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ajusta el contenido al tamaño fijo del carrusel */
+}
+
+.quiz-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Asegura que el formulario no se expanda */
+}
+
+.quiz-section form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%; /* Mantiene el tamaño controlado de los inputs */
+  max-width: 400px; /* Fija un tamaño máximo para los inputs */
+}
+
+.predict-button {
+  margin-top: 70px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.predict-button:hover {
+  background-color: #218838;
+}
+
+
+
+#conclusion h1 {
+  margin-top: 50px;
 }
