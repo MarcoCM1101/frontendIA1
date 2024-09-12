@@ -96,7 +96,7 @@ spline-viewer {
 
 .cancel-button {
   position: fixed; /* Fija el botón en la pantalla */
-  top: 100%; /* Centra verticalmente */
+  top: 90%; /* Centra verticalmente */
   left: 50%; /* Centra horizontalmente */
   transform: translate(
     -50%,
@@ -114,5 +114,5 @@ spline-viewer {
 }
 
 .cancel-button:hover {
-  background-color: #ff2a00;
+  background-color: #ff2a30;
 }

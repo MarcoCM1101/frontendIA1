@@ -10,9 +10,9 @@ import "../styles/planetStyles.css";
 function PlanetComponent({ onPlanetSelect }) {
   // Lista de planetas con sus respectivas rutas de imagen
   const planets = [
-    { id: 1, name: "Planeta 1", img: Planeta1 },
-    { id: 2, name: "Planeta 2", img: Planeta2 },
-    { id: 3, name: "Planeta 3", img: Planeta3 },
+    { id: 1, name: "Earth", img: Planeta1 },
+    { id: 2, name: "Mars", img: Planeta2 },
+    { id: 3, name: "Europe", img: Planeta3 },
   ];
 
   // Configuración del carrusel

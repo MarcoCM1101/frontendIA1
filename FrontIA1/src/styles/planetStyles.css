@@ -105,18 +105,36 @@
 }
 
 /* Estilos para el botón de cancelar */
-.cancel-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ff5733;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+
+.selected-planet {
+  display: flex;
+  justify-content: space-between; /* Espacio entre el planeta y el carrusel del cuestionario */
+  align-items: center; /* Alinea verticalmente los elementos */
+  height: 100vh;
+  padding: 0 20px;
 }
 
-.cancel-button:hover {
-  background-color: #ff2a00;
+.planet-left {
+  flex: 1;
+}
+
+.quiz-right {
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin-right: 5%;
+}
+
+.quiz-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-section form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
