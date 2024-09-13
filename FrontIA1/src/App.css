@@ -225,7 +225,6 @@ spline-viewer {
   background-color: #218838;
 }
 
-
 /* Animaciones */
 .fade-out {
   animation: fadeOut 0.5s ease-in-out, scaleDown 0.5s ease-in-out;
@@ -270,3 +269,53 @@ spline-viewer {
 #conclusion h1 {
   margin-top: 50px;
 }
+
+/* Estilo para la sección de contexto */
+.context-section {
+  background-color: #1a1a1a; /* Fondo oscuro que combina con el tema general */
+  color: white; /* Texto en blanco para contraste */
+  font-family: "Audiowide", sans-serif;
+  text-align: center;
+  padding: 50px 20px; /* Espaciado interno */
+  width: 100%;
+}
+
+.context-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.context-content {
+  font-size: 18px;
+  line-height: 1.6; /* Mejora la legibilidad con mayor espacio entre líneas */
+  max-width: 800px; /* Limita el ancho del texto para evitar que ocupe toda la pantalla */
+  margin: 0 auto; /* Centra el texto */
+  text-align: left;
+}
+
+.context-content p {
+  margin-bottom: 20px; /* Espaciado entre párrafos */
+}
+
+.context-emphasize {
+  font-weight: bold;
+  color: #ff5733; /* Resaltar ciertos elementos con el mismo color de los botones */
+}
+
+/* Espaciado extra para separar las secciones */
+#context {
+  padding: 100px 0;
+}
+
+.new-section {
+  background-color: lightgray;
+  font-family: "Audiowide", sans-serif;
+  color: #222;
+  text-align: center;
+  width: 100vw;
+  height: auto;
+  padding: 50px 0;
+}
+
+/* Mantén los estilos previos que tenías, solo modifiqué el contexto */

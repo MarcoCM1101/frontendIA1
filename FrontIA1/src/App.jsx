@@ -55,6 +55,40 @@ function App() {
             </li>
           </ul>
         </nav>
+        {/* Context Section */}
+        <div className="context-section" id="context">
+          <h2 className="context-title">Context</h2>
+          <div className="context-content">
+            <p>
+              Welcome to the year 2912, where your data science skills are
+              needed to solve a cosmic mystery. We've received a transmission
+              from four lightyears away and things aren't looking good.
+            </p>
+            <p>
+              The <span className="context-emphasize">Spaceship Titanic</span>{" "}
+              was an interstellar passenger liner launched a month ago. With
+              almost 13,000 passengers on board, the vessel set out on its
+              maiden voyage transporting emigrants from our solar system to
+              three newly habitable exoplanets orbiting nearby stars.
+            </p>
+            <p>
+              While rounding Alpha Centauri en route to its first
+              destination—the torrid{" "}
+              <span className="context-emphasize">55 Cancri E</span>—the unwary
+              Spaceship Titanic collided with a spacetime anomaly hidden within
+              a dust cloud. Sadly, it met a similar fate as its namesake from
+              1000 years before. Though the ship stayed intact, almost half of
+              the passengers were transported to an alternate dimension!
+            </p>
+            <p>
+              To help rescue crews and retrieve the lost passengers, you are
+              challenged to predict which passengers were transported by the
+              anomaly using records recovered from the spaceship’s damaged
+              computer system.
+            </p>
+            <p>Help save them and change history!</p>
+          </div>
+        </div>
 
         {/* Prediction Section */}
         <div className="new-section" id="travelTo">
@@ -74,9 +108,12 @@ function App() {
               {!selectedPlanet ? (
                 <PlanetComponent onPlanetSelect={handlePlanetSelect} />
               ) : (
-                <div className={`selected-planet ${isExiting ? "fade-out" : ""}`}>
+                <div
+                  className={`selected-planet ${isExiting ? "fade-out" : ""}`}
+                >
                   {/* Planeta seleccionado a la izquierda */}
                   <div className="planet-left">
+                    <h2 className="planet-name">{selectedPlanet.name}</h2>
                     <img
                       src={selectedPlanet.img}
                       alt={selectedPlanet.name}
@@ -86,7 +123,11 @@ function App() {
 
                   {/* Formulario en el centro */}
                   <div className="quiz-center">
-                    <Carousel onPredict={handlePredict} /> {/* Pasamos la función de predicción */}
+                    <Carousel
+                      onPredict={handlePredict}
+                      selectedPlanet={selectedPlanet}
+                    />{" "}
+                    {/* Pasamos la función de predicción */}
                   </div>
 
                   {/* Botón de cancelar a la derecha */}

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import axios from "axios"; // Importamos axios
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Carousel({ onPredict }) {
+function Carousel({ selectedPlanet }) {
+  const [predcit, setPredict] = useState(null);
   const [formData, setFormData] = useState({
-    HomePlanet: "",
+    HomePlanet: selectedPlanet.id,
     CryoSleep: false,
     Destination: "",
     Age: "",
@@ -16,7 +18,7 @@ function Carousel({ onPredict }) {
     Spa: "",
     VRDeck: "",
     Zona: "",
-    Spent: "",
+    Spent: 0,
     Side: "",
   });
 
@@ -41,12 +43,54 @@ function Carousel({ onPredict }) {
       ...prevData,
       [name]: type === "checkbox" ? checked : value,
     }));
-    validateForm({ ...formData, [name]: type === "checkbox" ? checked : value });
+    validateForm({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   const validateForm = (data) => {
     const isValid = Object.values(data).every((field) => field !== "");
     setIsFormValid(isValid);
+  };
+
+  const handlePredict = async (e) => {
+    e.preventDefault();
+
+    // Crear un objeto ordenado manualmente
+    const orderedData = {
+      HomePlanet: formData.HomePlanet,
+      CryoSleep: formData.CryoSleep,
+      Destination: formData.Destination,
+      Age: formData.Age,
+      VIP: formData.VIP,
+      RoomService: parseFloat(formData.RoomService) || 0, // Convertir a número
+      FoodCourt: parseFloat(formData.FoodCourt) || 0, // Convertir a número
+      ShoppingMall: parseFloat(formData.ShoppingMall) || 0, // Convertir a número
+      Spa: parseFloat(formData.Spa) || 0, // Convertir a número
+      VRDeck: parseFloat(formData.VRDeck) || 0, // Convertir a número
+      Spent:
+        (parseFloat(formData.RoomService) || 0) +
+        (parseFloat(formData.FoodCourt) || 0) +
+        (parseFloat(formData.ShoppingMall) || 0) +
+        (parseFloat(formData.Spa) || 0) +
+        (parseFloat(formData.VRDeck) || 0), // Sumar los valores convertidos a números
+      Zona: formData.Zona,
+      Side: formData.Side,
+    };
+
+    console.log("Datos enviados en orden:", orderedData);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/predict2",
+        orderedData
+      );
+      // setPredict(response.data);
+      console.log("Prediction result:", response.data);
+    } catch (error) {
+      console.error("Error making prediction:", error);
+    }
   };
 
   return (
@@ -56,20 +100,6 @@ function Carousel({ onPredict }) {
         <div className="quiz-section">
           <h3>Formulario - Parte 1</h3>
           <form className="form-section">
-            <div className="form-group">
-              <label>Home Planet</label>
-              <select
-                name="HomePlanet"
-                value={formData.HomePlanet}
-                onChange={handleChange}
-              >
-                <option value="">Select Home Planet</option>
-                <option value="Europa">Europa</option>
-                <option value="Earth">Earth</option>
-                <option value="Mars">Mars</option>
-              </select>
-            </div>
-
             <div className="form-group">
               <label>CryoSleep</label>
               <input
@@ -88,9 +118,9 @@ function Carousel({ onPredict }) {
                 onChange={handleChange}
               >
                 <option value="">Select Destination</option>
-                <option value="TRAPPIST-1e">TRAPPIST-1e</option>
-                <option value="PSO J318.5-22">PSO J318.5-22</option>
-                <option value="55 Cancri e">55 Cancri e</option>
+                <option value="2">TRAPPIST-1e</option>
+                <option value="1">PSO J318.5-22</option>
+                <option value="0">55 Cancri e</option>
               </select>
             </div>
 
@@ -197,24 +227,24 @@ function Carousel({ onPredict }) {
               </select>
             </div>
 
-          
             <div className="form-group">
               <label>Side</label>
               <select name="Side" value={formData.Side} onChange={handleChange}>
                 <option value="">Select Side</option>
-                <option value="P">P</option>
-                <option value="S">S</option>
+                <option value="0">P</option>
+                <option value="1">S</option>
               </select>
             </div>
 
             {/* Botón Predecir */}
             <button
               className="predict-button"
-              onClick={onPredict}
+              onClick={handlePredict} // Llamamos a handlePredict
               disabled={!isFormValid}
             >
               Predecir
             </button>
+            {/* <h1>{predcit}</h1> */}
           </form>
         </div>
       </Slider>
