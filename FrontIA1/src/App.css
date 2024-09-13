@@ -334,7 +334,7 @@ spline-viewer {
 .prediction-result {
   background-color: #f5f5f5; /* Fondo claro */
   color: #222; /* Color de texto oscuro */
-  border: 2px solid #28a745; /* Borde verde para resaltar el éxito */
+
   padding: 20px;
   border-radius: 10px;
   margin: 50px auto; /* Centrar el recuadro */
@@ -439,4 +439,14 @@ spline-viewer {
 /* Espaciado extra para separar las secciones */
 #context {
   padding: 100px 0;
+}
+
+/* Si el pasajero es transportado */
+.prediction-success h2 {
+  color: #28a745; /* Verde */
+}
+
+/* Si el pasajero no es transportado */
+.prediction-failure h2 {
+  color: #dc3545; /* Rojo */
 }

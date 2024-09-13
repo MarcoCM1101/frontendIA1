@@ -40,9 +40,10 @@ function PlanetComponent({ onPlanetSelect }) {
       <Slider {...settings}>
         {planets.map((planet) => (
           <div key={planet.id} onClick={() => onPlanetSelect(planet)}>
+            <h2 className={planet.name}>{planet.name}</h2>
             <img
               id={planet.id}
-              className="planet-img"
+              className={`planet-img ${planet.name}`}
               src={planet.img}
               alt={planet.name}
               style={{ cursor: "pointer" }}

@@ -61,8 +61,6 @@ function Carousel({ selectedPlanet }) {
     Side: formData.Side,
   };
 
-  console.log("Datos enviados en orden:", orderedData);
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -100,12 +98,23 @@ function Carousel({ selectedPlanet }) {
     }, 5000); // Simulación de una espera de 5 segundos
   };
 
+  // Definir el estilo basado en el resultado de la predicción
+  const getPredictionClass = () => {
+    if (predict?.Prediction === "Se ha transportado") {
+      return "prediction-success"; // Verde si es transportado
+    } else if (predict?.Prediction === "No se ha transportado") {
+      return "prediction-failure"; // Rojo si no es transportado
+    } else {
+      return ""; // Sin clase adicional si no hay predicción
+    }
+  };
+
   return (
     <div className="quiz-carousel">
       {isLoading ? (
         <Loader /> // Mostrar el loader mientras se espera
       ) : predict ? (
-        <div className="prediction-result">
+        <div className={`prediction-result ${getPredictionClass()}`}>
           <h2>{predict.Prediction}</h2>{" "}
           {/* Asegúrate de que Prediction sea el valor correcto */}
         </div>
