@@ -348,3 +348,95 @@ spline-viewer {
   color: #28a745; /* Color del texto en verde para coincidir con el borde */
   font-family: "Audiowide", sans-serif;
 }
+
+/* Estilo para la sección de contexto */
+.context-section {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 30%,
+      lightgray 100%
+    ),
+    url("../src/images/5471985.jpg"); /* Degradado y fondo */
+  color: white;
+  font-family: "Audiowide", sans-serif;
+  text-align: center;
+  padding: 50px 20px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  animation: fadeInBackground 1.5s ease-in-out;
+}
+
+/* Animación para el fondo */
+@keyframes fadeInBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.context-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  position: relative;
+  opacity: 0;
+  animation: slideInFromBottom 1s ease-in-out forwards;
+}
+
+/* Animación para el título */
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.context-content {
+  font-size: 18px;
+  line-height: 1.8; /* Espacio entre líneas para mayor legibilidad */
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  color: #f0f0f0; /* Ajuste del color del texto para mayor contraste */
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6); /* Sombra ligera en el texto */
+}
+
+/* Animación de flotación para los párrafos */
+.context-content p {
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards, floating 3s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+/* Animación de flotación */
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Resaltado de elementos clave */
+.context-emphasize {
+  font-weight: bold;
+  color: #ff5733;
+  text-shadow: 2px 2px 10px rgba(255, 87, 51, 0.6);
+}
+
+/* Espaciado extra para separar las secciones */
+#context {
+  padding: 100px 0;
+}

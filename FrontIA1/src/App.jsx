@@ -52,38 +52,41 @@ function App() {
             </li>
           </ul>
         </nav>
-        {/* Context Section */}
+        {/* Sección de Contexto */}
         <div className="context-section" id="context">
-          <h2 className="context-title">Context</h2>
+          <h2 className="context-title">Contexto</h2>
           <div className="context-content">
             <p>
-              Welcome to the year 2912, where your data science skills are
-              needed to solve a cosmic mystery. We've received a transmission
-              from four lightyears away and things aren't looking good.
+              Nos encontramos en el año 2912 y tus habilidades en ciencia de
+              datos son cruciales para resolver un enigma cósmico. Hemos
+              recibido una transmisión desde una distancia de cuatro años luz, y
+              la situación no parece nada alentadora.
             </p>
             <p>
-              The <span className="context-emphasize">Spaceship Titanic</span>{" "}
-              was an interstellar passenger liner launched a month ago. With
-              almost 13,000 passengers on board, the vessel set out on its
-              maiden voyage transporting emigrants from our solar system to
-              three newly habitable exoplanets orbiting nearby stars.
+              El <span className="context-emphasize">Spaceship Titanic</span>{" "}
+              era un transatlántico interestelar que fue lanzado hace un mes.
+              Con casi 13,000 pasajeros a bordo, la nave emprendió su viaje
+              inaugural, transportando emigrantes desde nuestro sistema solar
+              hacia tres exoplanetas recién habitables en órbita alrededor de
+              estrellas cercanas.
             </p>
             <p>
-              While rounding Alpha Centauri en route to its first
-              destination—the torrid{" "}
-              <span className="context-emphasize">55 Cancri E</span>—the unwary
-              Spaceship Titanic collided with a spacetime anomaly hidden within
-              a dust cloud. Sadly, it met a similar fate as its namesake from
-              1000 years before. Though the ship stayed intact, almost half of
-              the passengers were transported to an alternate dimension!
+              Mientras rodeaba Alpha Centauri, en su camino hacia su primer
+              destino—el cálido{" "}
+              <span className="context-emphasize">55 Cancri E</span>—el
+              Spaceship Titanic, desprevenido, colisionó con una anomalía en el
+              espacio-tiempo oculta en una nube de polvo. Tristemente, tuvo un
+              destino similar al de su homónimo de hace mil años. Aunque la nave
+              permaneció intacta, casi la mitad de los pasajeros fueron
+              transportados a una dimensión alternativa.
             </p>
             <p>
-              To help rescue crews and retrieve the lost passengers, you are
-              challenged to predict which passengers were transported by the
-              anomaly using records recovered from the spaceship’s damaged
-              computer system.
+              Para ayudar a los equipos de rescate a recuperar a los pasajeros
+              perdidos, te encargamos la tarea de predecir qué pasajeros fueron
+              transportados por la anomalía, utilizando los registros
+              recuperados del sistema dañado de la nave.
             </p>
-            <p>Help save them and change history!</p>
+            <p>¡Ayuda a salvarlos y cambia la historia!</p>
           </div>
         </div>
 
