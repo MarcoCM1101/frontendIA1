@@ -50,9 +50,6 @@ function App() {
             <li>
               <a href="#travelTo">Travel To</a>
             </li>
-            <li>
-              <a href="#conclusion">Conclusion</a>
-            </li>
           </ul>
         </nav>
         {/* Context Section */}
