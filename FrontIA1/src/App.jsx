@@ -92,7 +92,7 @@ function App() {
 
         {/* Prediction Section */}
         <div className="new-section" id="travelTo">
-          <h1>Travel To</h1>
+          <h1 className="travelTo">Travel To</h1>
 
           {/* Mostrar el nombre del planeta seleccionado debajo del título */}
           {selectedPlanet && (
@@ -140,15 +140,6 @@ function App() {
               )}
             </>
           )}
-        </div>
-
-        {/* Conclusion Section */}
-        <div className="new-section" id="conclusion">
-          <h1>Conclusion</h1>
-          <p>
-            Esta es la conclusión de la página. Puedes agregar aquí un resumen
-            de la información.
-          </p>
         </div>
       </div>
     </>
