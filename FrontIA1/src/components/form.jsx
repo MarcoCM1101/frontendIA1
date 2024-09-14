@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick"; // Librería para el carrusel
+import "slick-carousel/slick/slick.css"; // Estilos del carrusel
+import "slick-carousel/slick/slick-theme.css"; // Tema del carrusel
 import Loader from "./Loader"; // Importamos el componente del loader
-import axios from "axios";
+import axios from "axios"; // Importamos Axios para hacer solicitudes HTTP
 
 function Carousel({ selectedPlanet }) {
+  // Definimos el estado inicial del formulario con useState
   const [formData, setFormData] = useState({
-    HomePlanet: selectedPlanet.id,
+    HomePlanet: selectedPlanet.id, // Recibe el id del planeta seleccionado
     CryoSleep: false,
     Destination: "",
     Age: "",
@@ -22,24 +23,28 @@ function Carousel({ selectedPlanet }) {
     Side: "",
   });
 
+  // Estado para validar si el formulario es válido
   const [isFormValid, setIsFormValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Estado para mostrar el loader
-  const [predict, setPredict] = useState(null); // Estado para almacenar el resultado de la predicción
+  // Estado para mostrar el loader mientras se hace la predicción
+  const [isLoading, setIsLoading] = useState(false);
+  // Estado para almacenar el resultado de la predicción
+  const [predict, setPredict] = useState(null);
 
+  // Configuración del slider (carrusel)
   const quizSettings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    adaptiveWidth: true,
-    arrows: true,
-    nextArrow: <div className="slick-next">&#10095;</div>,
-    prevArrow: <div className="slick-prev">&#10094;</div>,
+    dots: true, // Mostrar puntos de navegación
+    infinite: false, // No hacer el carrusel infinito
+    speed: 500, // Velocidad de transición
+    slidesToShow: 1, // Mostrar una diapositiva a la vez
+    slidesToScroll: 1, // Desplazar una diapositiva a la vez
+    adaptiveHeight: true, // Ajustar la altura de acuerdo con el contenido
+    adaptiveWidth: true, // Ajustar el ancho si es necesario
+    arrows: true, // Mostrar flechas de navegación
+    nextArrow: <div className="slick-next">&#10095;</div>, // Flecha derecha
+    prevArrow: <div className="slick-prev">&#10094;</div>, // Flecha izquierda
   };
 
-  // Crear un objeto ordenado manualmente
+  // Crear un objeto ordenado manualmente para enviarlo al backend
   const orderedData = {
     HomePlanet: formData.HomePlanet,
     CryoSleep: formData.CryoSleep,
@@ -61,49 +66,54 @@ function Carousel({ selectedPlanet }) {
     Side: formData.Side,
   };
 
+  // Manejador para el cambio en el formulario
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked } = e.target; // Desestructuramos el evento
     setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
+      ...prevData, // Mantenemos los valores previos
+      [name]: type === "checkbox" ? checked : value, // Actualizamos el campo correspondiente
     }));
     validateForm({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : value, // Validamos el formulario con los nuevos valores
     });
   };
 
+  // Función para validar el formulario, revisando que no haya campos vacíos
   const validateForm = (data) => {
-    const isValid = Object.values(data).every((field) => field !== "");
-    setIsFormValid(isValid);
+    const isValid = Object.values(data).every((field) => field !== ""); // Verifica si todos los campos tienen valor
+    setIsFormValid(isValid); // Actualiza el estado de la validez del formulario
   };
 
+  // Función que maneja el envío de la predicción
   const handlePredict = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevenimos el comportamiento por defecto del botón
     setIsLoading(true); // Muestra el loader
 
+    // Simulamos una espera de 5 segundos antes de hacer la solicitud
     setTimeout(async () => {
       try {
+        // Hacemos la solicitud al backend
         const response = await axios.post(
           "http://34.193.195.198:8080/predict2", // Asegúrate de que este endpoint esté funcionando
           orderedData
         );
-        setPredict(response.data); // Asegúrate de que `response.data.Prediction` sea lo que esperas
-        setIsLoading(false); // Ocultar el loader
-        console.log("Prediction result:", response.data);
+        setPredict(response.data); // Guardamos el resultado de la predicción
+        setIsLoading(false); // Ocultamos el loader
+        console.log("Prediction result:", response.data); // Mostramos el resultado en consola
       } catch (error) {
-        console.error("Error making prediction:", error);
-        setIsLoading(false); // Asegúrate de ocultar el loader en caso de error
+        console.error("Error making prediction:", error); // Mostramos el error si falla la solicitud
+        setIsLoading(false); // Ocultamos el loader en caso de error
       }
-    }, 5000); // Simulación de una espera de 5 segundos
+    }, 5000); // Esperamos 5 segundos antes de enviar la solicitud
   };
 
-  // Definir el estilo basado en el resultado de la predicción
+  // Función para obtener la clase basada en el resultado de la predicción
   const getPredictionClass = () => {
     if (predict?.Prediction === "Se ha transportado") {
-      return "prediction-success"; // Verde si es transportado
+      return "prediction-success"; // Clase verde si el resultado es positivo
     } else if (predict?.Prediction === "No se ha transportado") {
-      return "prediction-failure"; // Rojo si no es transportado
+      return "prediction-failure"; // Clase roja si el resultado es negativo
     } else {
       return ""; // Sin clase adicional si no hay predicción
     }
@@ -112,14 +122,16 @@ function Carousel({ selectedPlanet }) {
   return (
     <div className="quiz-carousel">
       {isLoading ? (
-        <Loader /> // Mostrar el loader mientras se espera
+        <Loader /> // Mostrar el loader mientras se espera la predicción
       ) : predict ? (
         <div className={`prediction-result ${getPredictionClass()}`}>
           <h2>{predict.Prediction}</h2>{" "}
-          {/* Asegúrate de que Prediction sea el valor correcto */}
+          {/* Mostramos el resultado de la predicción */}
         </div>
       ) : (
         <Slider {...quizSettings}>
+          {" "}
+          {/* Slider para navegar entre las partes del formulario */}
           {/* Primera parte del formulario */}
           <div className="quiz-section">
             <h3>Formulario - Parte 1</h3>
@@ -170,7 +182,6 @@ function Carousel({ selectedPlanet }) {
               </div>
             </form>
           </div>
-
           {/* Segunda parte del formulario */}
           <div className="quiz-section">
             <h3>Formulario - Parte 2</h3>
@@ -231,7 +242,6 @@ function Carousel({ selectedPlanet }) {
               </div>
             </form>
           </div>
-
           {/* Tercera parte del formulario */}
           <div className="quiz-section">
             <h3>Formulario - Parte 3</h3>
@@ -272,7 +282,7 @@ function Carousel({ selectedPlanet }) {
               <button
                 className="predict-button"
                 onClick={handlePredict}
-                disabled={!isFormValid}
+                disabled={!isFormValid} // Desactivar el botón si el formulario no es válido
               >
                 Predecir
               </button>
